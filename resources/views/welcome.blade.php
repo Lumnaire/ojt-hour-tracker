@@ -52,7 +52,7 @@
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
                 <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
-                    <h1 class="font-medium text-base">👋 Welcome to OJT Hour Tracker </h1>
+                    <h1 class="font-medium text-base mb-3">👋 Welcome to OJT Hour Tracker </h1>
 
                     <p class="mb-2 text-[#706f6c] text-justify">Effortlessly track and manage your internship hours with our real-time monitoring system. Stay on top of your daily attendance and ensure accurate logging
                         of your rendered hours throughout your on-the-job training experience.</p>
