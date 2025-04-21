@@ -52,8 +52,8 @@
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
                 <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
-                    <h1 class="font-medium text-lg">👋 Welcome to OJT hour tracker </h1>
-                    <small>Developed by <a class="text-blue-600" href="https://ronald-portfolio-lumnaire.vercel.app/">Lumnaire</a></small>
+                    <h1 class="font-medium text-lg">👋 Welcome to OJT Hour Tracker </h1>
+
                     <p class="mb-2 text-[#706f6c] text-justify">Effortlessly track and manage your internship hours with our real-time monitoring system. Stay on top of your daily attendance and ensure accurate logging
                         of your rendered hours throughout your on-the-job training experience.</p>
                     <ul class="flex flex-col mb-4 lg:mb-6">
@@ -88,13 +88,15 @@
                             </span>
                         </li>
                     </ul>
-                    <ul class="flex gap-3 text-sm leading-normal">
+                    <ul class="flex gap-3 text-sm leading-normal mb-2">
                         <li>
                             <a href="{{ route('register') }}" class="inline-block hover:bg-black hover:border-black px-5 py-1.5 bg-[#1b1b18] rounded-sm border border-black text-white text-sm leading-normal">
                                Get Started
                             </a>
                         </li>
                     </ul>
+
+                    <small class="">Developed by <a class="text-blue-600" href="https://ronald-portfolio-lumnaire.vercel.app/">Lumnaire</a></small>
                 </div>
                 <div class="bg-[#fff2f2] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/376] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden">
                     <div id="carousel" class="relative w-full h-full">
