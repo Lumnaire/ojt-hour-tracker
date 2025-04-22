@@ -1,1 +1,1 @@
-<img src="{{ asset('images/Lumnaire.jpg') }}" alt="Logo" class="w-24 h-auto mx-auto rounded-full">
+<img src="{{ asset('images/Lumnaire.png') }}" alt="Logo" class="w-24 h-auto mx-auto rounded-full">
