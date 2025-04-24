@@ -1,5 +1,9 @@
 <x-app-layout>
-    <x-slot name="header"> <h2 class="font-semibold text-xl text-gray-800 leading-tight"> {{ __('Dashboard') }} </h2> </x-slot>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Kamusta, {{ Auth::user()->name }}! 👋
+        </h2>
+    </x-slot>
     <div class="max-w-5xl mx-auto py-10 px-4">
         <h2 class="text-3xl font-bold text-gray-800 mb-4">🕒 OJT Hour Tracker</h2>
         <p class="text-gray-600 mb-8">Track your attendance and rendered hours with ease.</p>
