@@ -59,6 +59,21 @@
             <div class="text-right font-semibold text-gray-700 text-sm">
                 Total Rendered Hours: <span id="totalHours">0</span> hrs
             </div>
+
+            <!-- Donate Section -->
+<div class="bg-white rounded-2xl shadow-lg p-6 mt-8">
+    <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">Support Developer 🙏</h3>
+    <p class="text-gray-600 mb-4 text-center">If this tracker has been helpful, feel free to send a little love via GCash 💙</p>
+
+    <div class="flex justify-center">
+        <img
+            src="{{ asset('images/gcash-qr.jpg') }}"
+            alt="GCash QR Code"
+            class="w-64 sm:w-72 md:w-80 lg:w-96 max-w-xs rounded-xl border"
+        >
+    </div>
+    <p class="text-gray-600 mt-4 text-center">Developed by <a class="text-blue-600" href="https://ronald-portfolio-lumnaire.vercel.app/">Lumnaire</a> </p>
+</div>
         </div>
         <!-- CARD END -->
 
