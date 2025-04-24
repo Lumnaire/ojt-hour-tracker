@@ -34,9 +34,9 @@
             </dialog>
 
             <!-- Logs Table -->
-            <div class="overflow-x-auto max-h-96 border rounded-lg">
-                <table class="min-w-full bg-white rounded-lg">
-                    <thead class="bg-gray-100 text-gray-700">
+            <div class="w-full overflow-x-auto max-h-96 border rounded-lg">
+                <table class="min-w-[640px] w-full bg-white rounded-lg text-sm sm:text-base">
+                    <thead class="bg-gray-100 text-gray-700 text-xs sm:text-sm whitespace-nowrap">
                         <tr>
                             <th class="py-3 px-4 text-left">Date</th>
                             <th class="py-3 px-4 text-left">Time In</th>
@@ -115,7 +115,8 @@
                 total += parseFloat(hours);
 
                 row.innerHTML = `
-                    <td class="py-2 px-4">${log.date}</td>
+              <td class="py-2 px-2 sm:px-4 whitespace-nowrap">${log.date}</td>
+
                     <td class="py-2 px-4">${log.time_in}</td>
                     <td class="py-2 px-4">
                         ${log.time_out ? log.time_out : `
