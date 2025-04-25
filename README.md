@@ -6,7 +6,7 @@ Effortlessly manage time-ins and time-outs, monitor your rendered hours in real-
 
 ---
 
-## 📸 Live Preview
+## 📸 Preview
 
 <img src="public/Screenshot 2025-04-25 144453.png" alt="OJT Hour Tracker Screenshot" style="border-radius: 8px; max-width: 100%;">
 
@@ -36,7 +36,7 @@ Works great on desktops, tablets, and mobile devices.
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/ojt-hour-tracker.git
+    git clone https://github.com/Lumnaire/ojt-hour-tracker.git
     cd ojt-hour-tracker
 
     ```
