@@ -6,9 +6,15 @@ Effortlessly manage time-ins and time-outs, monitor your rendered hours in real-
 
 ---
 
+<<<<<<< HEAD
 ## 📸 Live Preview
 
 <img src="public/Screenshot 2025-04-25 144453.png" alt="OJT Hour Tracker Screenshot" style="border-radius: 8px; max-width: 100%;">
+=======
+## 📸 Preview
+
+![OJT Hour Tracker Screenshot](./Screenshot%202025-04-25%20144453.png)
+>>>>>>> 00e6c4bab450307c54d554901ac1032728bc9ea3
 
 ---
 
@@ -33,6 +39,7 @@ Works great on desktops, tablets, and mobile devices.
 
 ## 🚀 Getting Started
 
+<<<<<<< HEAD
 1. Clone the repository:
 
     ```bash
@@ -73,3 +80,13 @@ Works great on desktops, tablets, and mobile devices.
 ##💙 Like This Project?
 If this project helped you or sparked inspiration,
 drop a ⭐ on the repo — it helps a lot!
+=======
+Clone the repo and get your local environment set up:
+
+```bash
+git clone https://github.com/yourusername/ojt-hour-tracker.git
+cd ojt-hour-tracker
+composer install
+cp .env.example .env
+php artisan key:generate
+>>>>>>> 00e6c4bab450307c54d554901ac1032728bc9ea3
