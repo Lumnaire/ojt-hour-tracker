@@ -60,6 +60,19 @@
                 Total Rendered Hours: <span id="totalHours">0</span> hrs
             </div>
 
+            <!-- Total Hours Needed Section -->
+<div class="mt-6 text-right space-y-4">
+    <div class="font-semibold text-gray-700 text-sm">
+        Total Hours Needed: <span id="neededHours">0</span> hrs
+    </div>
+    <div class="font-semibold text-gray-700 text-sm">
+        Remaining Hours: <span id="remainingHours">0</span> hrs
+    </div>
+    <button onclick="document.getElementById('editNeededModal').showModal()" class="mt-2 bg-green-600 text-white px-4 py-2 rounded-xl hover:bg-green-700 transition">
+        ✏️ Edit Total Hours Needed
+    </button>
+</div>
+
             <!-- Donate Section -->
 <div class="bg-white rounded-2xl shadow-lg p-6 mt-8">
     <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">Support Developer 🙏</h3>
@@ -97,6 +110,21 @@
         <div class="flex justify-end space-x-2">
             <button type="button" onclick="document.getElementById('editModal').close()" class="text-gray-500 px-4 py-2">Cancel</button>
             <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Update</button>
+        </div>
+    </form>
+</dialog>
+
+<!-- Edit Needed Hours Modal -->
+<dialog id="editNeededModal" class="rounded-xl p-6 shadow-xl max-w-md w-full">
+    <form id="editNeededForm" method="POST" action="#" onsubmit="return false;">
+        <h3 class="text-xl font-semibold mb-4">Set Total Hours Needed</h3>
+        <div class="mb-4">
+            <label class="block text-sm font-medium">Hours Needed</label>
+            <input type="number" name="needed_hours" required min="0" class="mt-1 w-full border rounded px-3 py-2">
+        </div>
+        <div class="flex justify-end space-x-2">
+            <button type="button" onclick="document.getElementById('editNeededModal').close()" class="text-gray-500 px-4 py-2">Cancel</button>
+            <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Save</button>
         </div>
     </form>
 </dialog>
@@ -213,6 +241,77 @@ document.getElementById('editForm').addEventListener('submit', function () {
                 renderLogs();
             });
         });
+
+        const NEEDED_HOURS_KEY = 'neededHours';
+
+function getNeededHours() {
+    return parseFloat(localStorage.getItem(NEEDED_HOURS_KEY)) || 0;
+}
+
+function saveNeededHours(value) {
+    localStorage.setItem(NEEDED_HOURS_KEY, value);
+}
+
+function renderNeededHours() {
+    const neededDisplay = document.getElementById('neededHours');
+    const remainingDisplay = document.getElementById('remainingHours');
+    const totalHours = parseFloat(document.getElementById('totalHours').textContent) || 0;
+    const neededHours = getNeededHours();
+
+    neededDisplay.textContent = neededHours.toFixed(2);
+    remainingDisplay.textContent = Math.max(neededHours - totalHours, 0).toFixed(2);
+}
+
+// Handle edit total hours needed form
+document.getElementById('editNeededForm').addEventListener('submit', function () {
+    const neededHours = parseFloat(this.needed_hours.value) || 0;
+    saveNeededHours(neededHours);
+    document.getElementById('editNeededModal').close();
+    renderNeededHours();
+});
+
+// Update after logs render
+function renderLogs() {
+    const logs = getLogs();
+    const tbody = document.getElementById('logTable');
+    const totalDisplay = document.getElementById('totalHours');
+    tbody.innerHTML = '';
+    let total = 0;
+
+    logs.forEach((log, index) => {
+        const row = document.createElement('tr');
+        row.className = 'border-t';
+        const hours = log.time_out ? calculateHours(log.time_in, log.time_out) : 0;
+        total += parseFloat(hours);
+
+        row.innerHTML = `
+            <td class="py-2 px-2 sm:px-4 whitespace-nowrap">${log.date}</td>
+            <td class="py-2 px-4">${log.time_in}</td>
+            <td class="py-2 px-4">
+                ${log.time_out ? log.time_out : `
+                    <form onsubmit="return false;" class="flex items-center space-x-2">
+                        <input type="time" onchange="updateTimeOut(${index}, this.value)" class="border rounded px-2 py-1 text-sm">
+                        <button class="text-sm text-blue-600 hover:underline">Save</button>
+                    </form>
+                `}
+            </td>
+            <td class="py-2 px-4">${hours}</td>
+            <td class="py-2 px-4">
+                <button onclick="openEditModal(${index})" class="text-sm text-yellow-500 hover:underline mr-2">Edit</button>
+                <button onclick="deleteLog(${index})" class="text-sm text-red-500 hover:underline">Delete</button>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+
+    totalDisplay.textContent = total.toFixed(2);
+    renderNeededHours(); // <-- Important: Recalculate needed/remaining after rendering logs
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderLogs();
+});
+
     </script>
 
 </x-app-layout>
