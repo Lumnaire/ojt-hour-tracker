@@ -17,8 +17,8 @@
                     + Time In
                 </button>
 
-                <button onclick="exportToCSV()" class="bg-green-600 ml-3 text-white px-5 py-2 rounded-xl hover:bg-green-700 transition">
-                    ⬇️ Download to Excel
+                <button onclick="exportToCSV()" class="bg-green-600 ml-3 text-white px-3 py-2 rounded-xl hover:bg-green-700 transition">
+                    Download to Excel
                 </button>
             </div>
 
