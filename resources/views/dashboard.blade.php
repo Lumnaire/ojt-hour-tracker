@@ -16,6 +16,10 @@
                 <button onclick="document.getElementById('timeInModal').showModal()" class="bg-blue-600 text-white px-5 py-2 rounded-xl hover:bg-blue-700 transition">
                     + Time In
                 </button>
+
+                <button onclick="exportToCSV()" class="bg-green-600 ml-3 text-white px-5 py-2 rounded-xl hover:bg-green-700 transition">
+                    ⬇️ Download to Excel
+                </button>
             </div>
 
             <!-- Time In Modal -->
@@ -55,13 +59,14 @@
                 </table>
             </div>
 
-            <!-- Total Hours -->
-            <div class="text-right font-semibold text-gray-700 text-sm">
-                Total Rendered Hours: <span id="totalHours">0</span> hrs
-            </div>
 
-            <!-- Total Hours Needed Section -->
-<div class="mt-6 text-right space-y-4">
+
+
+            <!-- Total Hours Rendered, Needed, Remaining Section -->
+<div class="mt-6 text-left space-y-4">
+    <div class=" font-semibold text-gray-700 text-sm">
+        Total Rendered Hours: <span id="totalHours">0</span> hrs
+    </div>
     <div class="font-semibold text-gray-700 text-sm">
         Total Hours Needed: <span id="neededHours">0</span> hrs
     </div>
@@ -311,6 +316,31 @@ function renderLogs() {
 document.addEventListener('DOMContentLoaded', () => {
     renderLogs();
 });
+
+function exportToCSV() {
+    const logs = getLogs();
+    if (logs.length === 0) {
+        alert("No logs to export!");
+        return;
+    }
+
+    let csv = 'Date,Time In,Time Out,Hours\n';
+    logs.forEach(log => {
+        const hours = log.time_out ? calculateHours(log.time_in, log.time_out) : 0;
+        csv += `${log.date},${log.time_in},${log.time_out || ''},${hours}\n`;
+    });
+
+    // Create downloadable link
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'ojt_logs.csv';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
 
     </script>
 
